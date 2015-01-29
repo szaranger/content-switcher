@@ -25,7 +25,8 @@ module.exports = function(grunt) {
   	  },
   	  dist: {
   	    files: {
-  	      'dist/jquery.<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+  	      'dist/jquery.contentswitcher.min.js': ['<%= concat.dist.dest %>'],
+          'jquery.contentswitcher.min.js': ['<%= concat.dist.dest %>']
   	    }
   	  }
     },
