@@ -1,6 +1,5 @@
-/*globals $, clearInterval, setInterval, window, setTimeout */
-
 (function( $ ) {
+	
 	$.fn.switchContent = function (options) {
 	  'use strict';
 
@@ -15,7 +14,7 @@
 		  },
 	      verticalPadding = replacefirstContentItemCss(firstContentItem, 'padding', 10),
 	      verticalMargin = replacefirstContentItemCss(firstContentItem, 'margin', 10),
-	      myTimer,
+	      interval,
 	      siblings,
 	      totalHeight,
 	      indexEl = 1,
@@ -33,7 +32,7 @@
 	  
 	  function setTimedSwitch() {
 	  
-	    myTimer = setInterval(function () {
+	    interval = setInterval(function () {
 	      if (($('.selected').prev().index() + 1) === elCount) {
 	        firstContentItem.trigger('click');
 	      } else {
@@ -72,7 +71,7 @@
 	      $('.content-content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
 	      $('.content-content:nth-child(' + indexEl + ')').addClass('top-content');
 	  
-	      clearInterval(myTimer);
+	      clearInterval(interval);
 	      setTimedSwitch();
 	  
 	    });
@@ -83,7 +82,7 @@
 	  
 	    $(window).resize(function () {
 	  
-	      clearInterval(myTimer);
+	      clearInterval(interval);
 	      setTimeout(function () {
 	        $('.selected').trigger('click');
 	      }, 1000 );
