@@ -1,0 +1,24 @@
+{
+  "name": "content-switcher",
+  "version": "0.0.0",
+  "homepage": "https://github.com/szaranger/content-switcher",
+  "authors": [
+    "Sean Amarasinghe <szaranger@yahoo.com>"
+  ],
+  "description": "jQuery plugin for an article content switcher",
+  "main": "jquery.contentswitcher.js",
+  "keywords": [
+    "jQuery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.3"
+  }
+}
