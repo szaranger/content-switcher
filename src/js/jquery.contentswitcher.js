@@ -1,14 +1,14 @@
 (function( $ ) {
-	
+
 	$.fn.switchContent = function (options) {
 	  'use strict';
 
 	  var highlight = $('.highlight'),
-	      contentList = $('.content-headlines'),
-	      contentListItems = $('.content-headlines li'),
-	      firstContentItem = $('.content-headlines li:nth-child(1)'),
-	      contentPreview = $('.content-preview'),
-	      elCount = $('.content-headlines').children(':not(.highlight)').index(),
+	      contentList = $('.content-switcher-headlines'),
+	      contentListItems = $('.content-switcher-headlines li'),
+	      firstContentItem = $('.content-switcher-headlines li:nth-child(1)'),
+	      contentPreview = $('.content-switcher-preview'),
+	      elCount = $('.content-switcher-headlines').children(':not(.highlight)').index(),
 	      replacefirstContentItemCss = function(firstContentItem, prop, px) {
 		  	return parseInt(firstContentItem.css(prop + '-top').replace('px', ''), px) + parseInt(firstContentItem.css(prop + '-top').replace('px', ''), px);
 		  },
@@ -68,8 +68,8 @@
 	  
 	      indexEl = $(this).index() + 1;
 	  
-	      $('.content-content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
-	      $('.content-content:nth-child(' + indexEl + ')').addClass('top-content');
+	      $('.content-switcher-content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
+	      $('.content-switcher-content:nth-child(' + indexEl + ')').addClass('top-content');
 	  
 	      clearInterval(interval);
 	      setTimedSwitch();
