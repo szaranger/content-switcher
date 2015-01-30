@@ -4,16 +4,17 @@
 	  'use strict';
 
 	  var highlight = $('.highlight'),
-	      contentList = $('.content-switcher-headlines'),
-	      contentListItems = $('.content-switcher-headlines li'),
-	      firstContentItem = $('.content-switcher-headlines li:nth-child(1)'),
-	      contentPreview = $('.content-switcher-preview'),
-	      elCount = $('.content-switcher-headlines').children(':not(.highlight)').index(),
-	      replacefirstContentItemCss = function(firstContentItem, prop, px) {
-		  	return parseInt(firstContentItem.css(prop + '-top').replace('px', ''), px) + parseInt(firstContentItem.css(prop + '-top').replace('px', ''), px);
+	  	  prefix = '.content-switcher-',	
+	      contentList = $(prefix + 'headlines'),
+	      contentListItems = $(prefix + 'headlines li'),
+	      firstContentItem = $(prefix + 'headlines li:nth-child(1)'),
+	      contentPreview = $(prefix + 'preview'),
+	      elCount = $(prefix + 'headlines').children(':not(.highlight)').index(),
+	      replaceFirstContentItemCss = function(firstContentItem, prop, px) {
+		  	return parseInt(firstContentItem.css(prop + '-top').replace('px', ''), px) + parseInt(firstContentItem.css(prop + '-bottom').replace('px', ''), px);
 		  },
-	      verticalPadding = replacefirstContentItemCss(firstContentItem, 'padding', 10),
-	      verticalMargin = replacefirstContentItemCss(firstContentItem, 'margin', 10),
+	      verticalPadding = replaceFirstContentItemCss(firstContentItem, 'padding', 10),
+	      verticalMargin = replaceFirstContentItemCss(firstContentItem, 'margin', 10),
 	      interval,
 	      siblings,
 	      totalHeight,
@@ -21,11 +22,13 @@
 	      i;
 	  
 	  function setEqualHeight() {
-	    
-	    if (contentPreview.height() < contentList.height()) {
-	      contentPreview.height(contentList.height());
-	    } else if ((contentList.height() < contentPreview.height()) && (contentList.height() > parseInt(contentPreview.css('min-height').replace('px', ''), 10))) {
-	      contentPreview.height(contentList.height());
+	    var contentListHeight = contentList.height(),
+	    	contentPreviewHeight = contentPreview.height();
+
+	    if (contentPreviewHeight < contentListHeight) {
+	      contentPreview.height(contentListHeight);
+	    } else if ((contentListHeight < contentPreviewHeight) && (contentListHeight > parseInt(contentPreview.css('min-height').replace('px', ''), 10))) {
+	      contentPreview.height(contentListHeight);
 	    }
 	    
 	  }
@@ -51,14 +54,14 @@
 	  
 	      siblings = $(this).prevAll();
 	      totalHeight = 0;
-	  
+
 	      /* this loop calculates the height of individual elements, including margins/padding */
 	      for (i = 0; i < siblings.length; i += 1) {
 	          totalHeight += $(siblings[i]).height();
 	          totalHeight += verticalPadding;
-	          totalHeight += verticalMargin;
+	          totalHeight += verticalMargin;        
 	      }
-	  
+  
 	      /* this moves the highlight vertically the distance calculated in the previous loop
 	         and also corrects the height of the highlight to match the current selection */
 	      highlight.css({
@@ -68,8 +71,8 @@
 	  
 	      indexEl = $(this).index() + 1;
 	  
-	      $('.content-switcher-content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
-	      $('.content-switcher-content:nth-child(' + indexEl + ')').addClass('top-content');
+	      $(prefix + 'content:nth-child(' + indexEl + ')').siblings().removeClass('top-content');
+	      $(prefix + 'content:nth-child(' + indexEl + ')').addClass('top-content');
 	  
 	      clearInterval(interval);
 	      setTimedSwitch();

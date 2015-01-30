@@ -16,6 +16,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
+          'src/css/jquery.contentswitcher.css': 'src/sass/main.scss',
           'jquery.contentswitcher.css': 'src/sass/main.scss'
         }
       }
